@@ -13,11 +13,11 @@ connectdb()
 app.use(express.urlencoded({extended:false}))
 
 //static file- html css js
-app.use('/',express.static(join(process.cwd(),'public')))
-app.use('/edit',express.static(join(process.cwd(),'public')))
+app.use('/student',express.static(join(process.cwd(),'public')))
+app.use('/student/edit',express.static(join(process.cwd(),'public')))
 
 //controller path
-app.use(router)
+app.use('/student',router)
 
 
 app.listen('8000',()=>{

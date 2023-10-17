@@ -10,7 +10,7 @@ class HomeController {
             })
             //saving document in database
             const result = await doc.save()
-            res.redirect('/')
+            res.redirect('/student')
         } catch (error) {
             console.log(error)
         }
@@ -41,7 +41,7 @@ class HomeController {
             const result = await studentModel.findByIdAndUpdate(req.params.id,req.body)
             // console.log(req.params.id)
             // console.log(req.body)
-            res.redirect('/')
+            res.redirect('/student')
         } catch (error) {
             console.log(error)
         }
@@ -50,7 +50,7 @@ class HomeController {
     static deleteDocById = async(req,res)=>{
         try {
             const result = await studentModel.findByIdAndDelete(req.params.id)
-            res.redirect('/')
+            res.redirect('/student')
         } catch (error) {
             console.log(error)
         }

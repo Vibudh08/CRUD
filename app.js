@@ -9,15 +9,18 @@ const studentModel = require('./models/Student')
 //db connection
 connectdb()
 
+//set template engine
+app.set('view engine','ejs')
+
 //middleware to get data from the form
 app.use(express.urlencoded({extended:false}))
 
 //static file- html css js
-app.use('/student',express.static(join(process.cwd(),'public')))
-app.use('/student/edit',express.static(join(process.cwd(),'public')))
+app.use('/login',express.static(join(process.cwd(),'public')))
+app.use('/login/edit',express.static(join(process.cwd(),'public')))
 
 //controller path
-app.use('/student',router)
+app.use('/login',router)
 
 
 app.listen('8000',()=>{

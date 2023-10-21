@@ -1,5 +1,5 @@
 const studentModel = require('../models/Student.js')
-class HomeController {
+class StudentController {
 
     static createDoc = async(req,res)=>{
         try {
@@ -10,7 +10,7 @@ class HomeController {
             })
             //saving document in database
             const result = await doc.save()
-            res.redirect('/student')
+            res.redirect('/login')
         } catch (error) {
             console.log(error)
         }
@@ -19,8 +19,8 @@ class HomeController {
     static getAllDoc = async (req,res)=>{
         try {
             const result = await studentModel.find()
-            res.render('index.ejs',{data : result})
-            // console.log(result)
+            res.render('index2',{data : result})
+            console.log(result)
         } catch (error) {
             console.log(error)
         }
@@ -30,7 +30,7 @@ class HomeController {
         try {
             const result = await studentModel.findById(req.params.id)
             // console.log(result)
-            res.render('edit.ejs',{data:result})
+            res.render('edit',{data:result})
         } catch (error) {
            console.log(error) 
         }
@@ -41,7 +41,7 @@ class HomeController {
             const result = await studentModel.findByIdAndUpdate(req.params.id,req.body)
             // console.log(req.params.id)
             // console.log(req.body)
-            res.redirect('/student')
+            res.redirect('/login')
         } catch (error) {
             console.log(error)
         }
@@ -50,11 +50,11 @@ class HomeController {
     static deleteDocById = async(req,res)=>{
         try {
             const result = await studentModel.findByIdAndDelete(req.params.id)
-            res.redirect('/student')
+            res.redirect('/login')
         } catch (error) {
             console.log(error)
         }
     }
 }
 
-module.exports = HomeController
+module.exports = StudentController
